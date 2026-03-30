@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 产品全链路修炼手册 - 成长路线图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    padding: 60px 20px 20px;
+  }
+  .header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+  }
+  .header p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ── Mindset shift banner ── */
+  .mindset {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    margin: 40px auto 10px;
+    max-width: 900px;
+    flex-wrap: wrap;
+  }
+  .mindset-item {
+    text-align: center;
+    padding: 16px 24px;
+    position: relative;
+  }
+  .mindset-item .label {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .mindset-item .question {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .mindset-item .sub {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 4px;
+  }
+  .mindset-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #475569;
+    padding: 0 4px;
+  }
+  .m-blue .question { color: #60a5fa; }
+  .m-green .question { color: #4ade80; }
+  .m-orange .question { color: #fb923c; }
+  .m-purple .question { color: #c084fc; }
+
+  /* ── Timeline ── */
+  .timeline {
+    position: relative;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 40px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #3b82f6, #22c55e, #f97316, #a855f7);
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+
+  .stage {
+    position: relative;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .stage:nth-child(odd) { flex-direction: row; }
+  .stage:nth-child(even) { flex-direction: row-reverse; }
+
+  .stage-dot {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  }
+
+  .stage-content {
+    width: 44%;
+    padding: 28px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: default;
+  }
+  .stage-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+  .stage:nth-child(odd) .stage-content { margin-right: auto; }
+  .stage:nth-child(even) .stage-content { margin-left: auto; }
+
+  .stage-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .stage-icon {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .stage-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .stage-duration {
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .stage-desc {
+    font-size: 0.95rem;
+    color: #cbd5e1;
+    margin-bottom: 18px;
+    line-height: 1.7;
+    border-left: 3px solid;
+    padding-left: 12px;
+  }
+
+  .dir-list {
+    list-style: none;
+    margin-bottom: 18px;
+  }
+  .dir-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: #94a3b8;
+  }
+  .dir-list li .dir-icon { flex-shrink: 0; font-size: 1rem; }
+  .dir-list li strong { color: #e2e8f0; }
+
+  .checklist {
+    list-style: none;
+    margin-top: 12px;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 5px 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+  }
+  .checklist li::before {
+    content: '☐';
+    flex-shrink: 0;
+    font-size: 0.9rem;
+  }
+
+  .books {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .books-title {
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .book-tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin: 3px 4px 3px 0;
+    color: #e2e8f0;
+  }
+
+  /* ── Stage colors ── */
+  .s1 .stage-dot { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .s1 .stage-content { background: rgba(59,130,246,0.08); }
+  .s1 .stage-title { color: #60a5fa; }
+  .s1 .stage-duration { background: rgba(59,130,246,0.15); color: #93bbfd; }
+  .s1 .stage-desc { border-color: #3b82f6; }
+  .s1 .stage-icon { background: rgba(59,130,246,0.15); }
+  .s1 .book-tag { background: rgba(59,130,246,0.15); }
+
+  .s2 .stage-dot { background: linear-gradient(135deg, #22c55e, #16a34a); }
+  .s2 .stage-content { background: rgba(34,197,94,0.08); }
+  .s2 .stage-title { color: #4ade80; }
+  .s2 .stage-duration { background: rgba(34,197,94,0.15); color: #86efac; }
+  .s2 .stage-desc { border-color: #22c55e; }
+  .s2 .stage-icon { background: rgba(34,197,94,0.15); }
+  .s2 .book-tag { background: rgba(34,197,94,0.15); }
+
+  .s3 .stage-dot { background: linear-gradient(135deg, #f97316, #ea580c); }
+  .s3 .stage-content { background: rgba(249,115,22,0.08); }
+  .s3 .stage-title { color: #fb923c; }
+  .s3 .stage-duration { background: rgba(249,115,22,0.15); color: #fdba74; }
+  .s3 .stage-desc { border-color: #f97316; }
+  .s3 .stage-icon { background: rgba(249,115,22,0.15); }
+  .s3 .book-tag { background: rgba(249,115,22,0.15); }
+
+  .s4 .stage-dot { background: linear-gradient(135deg, #a855f7, #9333ea); }
+  .s4 .stage-content { background: rgba(168,85,247,0.08); }
+  .s4 .stage-title { color: #c084fc; }
+  .s4 .stage-duration { background: rgba(168,85,247,0.15); color: #d8b4fe; }
+  .s4 .stage-desc { border-color: #a855f7; }
+  .s4 .stage-icon { background: rgba(168,85,247,0.15); }
+  .s4 .book-tag { background: rgba(168,85,247,0.15); }
+
+  /* ── Cross-cutting bar ── */
+  .crosscut {
+    max-width: 1100px;
+    margin: 20px auto 60px;
+    padding: 0 40px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .crosscut-card {
+    flex: 1;
+    min-width: 280px;
+    padding: 24px 28px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .cc-cases {
+    background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(245,158,11,0.05));
+    border-color: rgba(251,191,36,0.2);
+  }
+  .cc-tools {
+    background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(79,70,229,0.05));
+    border-color: rgba(99,102,241,0.2);
+  }
+  .crosscut-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .cc-cases h3 { color: #fbbf24; }
+  .cc-tools h3 { color: #818cf8; }
+  .crosscut-card p {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+  .crosscut-card .badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin: 8px 4px 0 0;
+    color: #cbd5e1;
+  }
+  .cc-cases .badge { background: rgba(251,191,36,0.15); }
+  .cc-tools .badge { background: rgba(99,102,241,0.15); }
+
+  /* ── Principles ── */
+  .principles {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+  }
+  .principles h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    margin-bottom: 24px;
+  }
+  .principles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  .principle-card {
+    padding: 20px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+  .principle-card .p-icon { font-size: 1.8rem; margin-bottom: 10px; }
+  .principle-card h4 { font-size: 1rem; margin-bottom: 6px; color: #e2e8f0; }
+  .principle-card p { font-size: 0.85rem; color: #94a3b8; line-height: 1.5; }
+
+  /* ── Engineer advantage callout ── */
+  .advantage {
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    padding: 0 40px;
+  }
+  .advantage-box {
+    padding: 24px 28px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(56,189,248,0.04));
+    border: 1px solid rgba(14,165,233,0.2);
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .advantage-box h3 {
+    font-size: 1.1rem;
+    color: #38bdf8;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .adv-item {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+  }
+  .adv-item .adv-icon { font-size: 1.6rem; margin-bottom: 6px; }
+  .adv-item .adv-label { font-size: 0.9rem; font-weight: 600; color: #e2e8f0; }
+  .adv-item .adv-desc { font-size: 0.8rem; color: #94a3b8; margin-top: 4px; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: #475569;
+    font-size: 0.85rem;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    .timeline::before { left: 24px; }
+    .stage { flex-direction: column !important; padding-left: 56px; }
+    .stage-dot { left: 24px !important; }
+    .stage-content { width: 100% !important; margin: 0 !important; }
+    .mindset { flex-direction: column; align-items: center; }
+    .mindset-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>AI 产品全链路修炼手册</h1>
+  <p>从工程师到合伙人的成长路径 — 围绕元境产品实战展开</p>
+</div>
+
+<!-- Mindset shift -->
+<div class="mindset">
+  <div class="mindset-item m-blue">
+    <div class="label">工程师思维</div>
+    <div class="question">怎么实现？</div>
+    <div class="sub">技术最优解</div>
+  </div>
+  <div class="mindset-arrow">→</div>
+  <div class="mindset-item m-green">
+    <div class="label">产品思维</div>
+    <div class="question">该不该做？</div>
+    <div class="sub">体验最优解</div>
+  </div>
+  <div class="mindset-arrow">→</div>
+  <div class="mindset-item m-orange">
+    <div class="label">商业思维</div>
+    <div class="question">能不能赚钱？</div>
+    <div class="sub">商业最优解</div>
+  </div>
+  <div class="mindset-arrow">→</div>
+  <div class="mindset-item m-purple">
+    <div class="label">合伙人思维</div>
+    <div class="question">公司往哪走？</div>
+    <div class="sub">战略最优解</div>
+  </div>
+</div>
+
+<!-- Engineer Advantage -->
+<div class="advantage">
+  <div class="advantage-box">
+    <h3>🛠 工程师的天然优势 — 不要丢掉，要叠加</h3>
+    <div class="adv-item">
+      <div class="adv-icon">🔍</div>
+      <div class="adv-label">逻辑严密</div>
+      <div class="adv-desc">发现需求中的逻辑漏洞</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">⚡</div>
+      <div class="adv-label">边界思考</div>
+      <div class="adv-desc">想到 PM 忽略的异常场景</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">💰</div>
+      <div class="adv-label">成本意识</div>
+      <div class="adv-desc">评估技术成本，提供替代方案</div>
+    </div>
+    <div class="adv-item">
+      <div class="adv-icon">📊</div>
+      <div class="adv-label">数据能力</div>
+      <div class="adv-desc">直接写 SQL，不依赖数据团队</div>
+    </div>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="timeline">
+
+  <!-- Stage 1 -->
+  <div class="stage s1">
+    <div class="stage-dot">1</div>
+    <div class="stage-content">
+      <div class="stage-header">
+        <div class="stage-icon">👁</div>
+        <div>
+          <div class="stage-title">看懂用户，做对产品</div>
+          <span class="stage-duration">1 ~ 3 个月</span>
+        </div>
+      </div>
+      <div class="stage-desc">从"怎么实现"到"该不该做"</div>
+      <ul class="dir-list">
+        <li><span class="dir-icon">📁</span><strong>01-产品思维/</strong> — 用户访谈、需求分析、PRD、竞品拆解</li>
+        <li><span class="dir-icon">📁</span><strong>02-AI产品专项/</strong> — 5 大设计模式、幻觉处理、Prompt 产品化</li>
+      </ul>
+      <details>
+        <summary style="cursor:pointer;color:#60a5fa;font-size:0.9rem;">交付物 Checklist ▸</summary>
+        <ul class="checklist">
+          <li>完成 3 次用户访谈，输出用户画像</li>
+          <li>独立写出一份 PRD</li>
+          <li>拆解 5 个 AI 产品的设计决策</li>
+          <li>总结 AI 产品 5 大设计模式</li>
+          <li>梳理 AI UX 挑战清单</li>
+        </ul>
+      </details>
+      <div class="books">
+        <div class="books-title">推荐阅读</div>
+        <span class="book-tag">📖 启示录</span>
+        <span class="book-tag">📖 俞军产品方法论</span>
+        <span class="book-tag">📖 洞察力</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage s2">
+    <div class="stage-dot">2</div>
+    <div class="stage-content">
+      <div class="stage-header">
+        <div class="stage-icon">🚀</div>
+        <div>
+          <div class="stage-title">驱动增长，跑通数据</div>
+          <span class="stage-duration">2 ~ 4 个月</span>
+        </div>
+      </div>
+      <div class="stage-desc">从"做了功能"到"看到数据涨了"</div>
+      <ul class="dir-list">
+        <li><span class="dir-icon">📁</span><strong>03-增长与运营/</strong> — AARRR、北极星指标、内容/社区/渠道获客</li>
+        <li><span class="dir-icon">📁</span><strong>04-数据驱动/</strong> — 指标体系、A/B 测试、漏斗分析、SQL 分析</li>
+      </ul>
+      <details>
+        <summary style="cursor:pointer;color:#4ade80;font-size:0.9rem;">交付物 Checklist ▸</summary>
+        <ul class="checklist">
+          <li>设计北极星指标和 AARRR 漏斗</li>
+          <li>跑通一个获客渠道</li>
+          <li>搭建数据看板</li>
+          <li>完成首次 A/B 测试闭环</li>
+          <li>建立 AI 产品评估指标体系</li>
+        </ul>
+      </details>
+      <div class="books">
+        <div class="books-title">推荐阅读</div>
+        <span class="book-tag">📖 增长黑客</span>
+        <span class="book-tag">📖 精益创业</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage s3">
+    <div class="stage-dot">3</div>
+    <div class="stage-content">
+      <div class="stage-header">
+        <div class="stage-icon">♟</div>
+        <div>
+          <div class="stage-title">商业判断，赚到钱</div>
+          <span class="stage-duration">4 ~ 6 个月</span>
+        </div>
+      </div>
+      <div class="stage-desc">从"做一个好产品"到"做一个好生意"</div>
+      <ul class="dir-list">
+        <li><span class="dir-icon">📁</span><strong>05-商业与战略/</strong> — SaaS/API 模式、AI 定价、市场定位、融资 BP</li>
+      </ul>
+      <details>
+        <summary style="cursor:pointer;color:#fb923c;font-size:0.9rem;">交付物 Checklist ▸</summary>
+        <ul class="checklist">
+          <li>算清单位经济模型（LTV、CAC、毛利率）</li>
+          <li>制定并验证定价策略</li>
+          <li>完成竞争格局分析</li>
+          <li>输出完整商业计划书</li>
+        </ul>
+      </details>
+      <div class="books">
+        <div class="books-title">推荐阅读</div>
+        <span class="book-tag">📖 从0到1</span>
+        <span class="book-tag">📖 好战略，坏战略</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage s4">
+    <div class="stage-dot">4</div>
+    <div class="stage-content">
+      <div class="stage-header">
+        <div class="stage-icon">👑</div>
+        <div>
+          <div class="stage-title">带队决策，持续修炼</div>
+          <span class="stage-duration">持续</span>
+        </div>
+      </div>
+      <div class="stage-desc">从个人贡献者（IC）到为整条业务线负责</div>
+      <ul class="dir-list">
+        <li><span class="dir-icon">📁</span><strong>06-团队与领导力/</strong> — 团队搭建、跨部门协作、OKR、合伙人权责</li>
+        <li><span class="dir-icon">📁</span><strong>08-认知升级/</strong> — 第一性原理、系统思维、结构化表达</li>
+      </ul>
+      <details>
+        <summary style="cursor:pointer;color:#c084fc;font-size:0.9rem;">交付物 Checklist ▸</summary>
+        <ul class="checklist">
+          <li>建立跨部门协作机制</li>
+          <li>制定团队 OKR 和产品路线图</li>
+          <li>培养 1 个能独当一面的下属</li>
+          <li>形成自己的决策框架</li>
+          <li>完成元境产品阶段性复盘</li>
+        </ul>
+      </details>
+      <div class="books">
+        <div class="books-title">推荐阅读</div>
+        <span class="book-tag">📖 高产出管理</span>
+        <span class="book-tag">📖 穷查理宝典</span>
+        <span class="book-tag">📖 思考，快与慢</span>
+        <span class="book-tag">📖 原则</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Cross-cutting -->
+<div class="crosscut">
+  <div class="crosscut-card cc-cases">
+    <h3>📚 07-案例研究/ — 贯穿全程</h3>
+    <p>每个阶段都要拆案例，每个案例回答 6 个问题：<br>产品定位 → 核心体验 → 增长策略 → 商业模式 → 技术壁垒 → 对元境的启发</p>
+    <span class="badge">ChatGPT</span>
+    <span class="badge">Cursor</span>
+    <span class="badge">Midjourney</span>
+    <span class="badge">Perplexity</span>
+    <span class="badge">Notion AI</span>
+    <span class="badge">Runway</span>
+    <span class="badge">Character.ai</span>
+  </div>
+  <div class="crosscut-card cc-tools">
+    <h3>🧰 09-工具箱/ — 随用随取</h3>
+    <p>模板和工具推荐，不需要按顺序学，用到什么查什么。</p>
+    <span class="badge">PRD 模板</span>
+    <span class="badge">竞品分析模板</span>
+    <span class="badge">BP 模板</span>
+    <span class="badge">Figma</span>
+    <span class="badge">PostHog</span>
+    <span class="badge">Linear</span>
+    <span class="badge">Metabase</span>
+  </div>
+</div>
+
+<!-- Principles -->
+<div class="principles">
+  <h2>四条核心原则</h2>
+  <div class="principles-grid">
+    <div class="principle-card">
+      <div class="p-icon">🎯</div>
+      <h4>实战优先</h4>
+      <p>所有内容必须结合元境实际产品，不做纯理论</p>
+    </div>
+    <div class="principle-card">
+      <div class="p-icon">🔧</div>
+      <h4>工程师优势</h4>
+      <p>利用技术背景（懂成本、可行性、数据），而不是抛弃它</p>
+    </div>
+    <div class="principle-card">
+      <div class="p-icon">⚖️</div>
+      <h4>回头成本思维</h4>
+      <p>做错了改的成本越高，越值得深度学习</p>
+    </div>
+    <div class="principle-card">
+      <div class="p-icon">✍️</div>
+      <h4>输出倒逼输入</h4>
+      <p>每学一个主题，必须输出一篇实战总结</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  AI Product Playbook — 元境 · 从工程师到合伙人
+</div>
+
+</body>
+</html>
