@@ -98,6 +98,10 @@
 
 ## 1.5 AI 产品设计模式
 
+<p align="center">
+  <img src="./assets/ai-design-patterns.png" width="560" alt="AI 产品设计模式：对话式、生成式、辅助式、Agent式、搜索增强式" />
+</p>
+
 | 模式 | 典型产品 | 核心交互 | 设计要点 |
 |------|---------|---------|---------|
 | **对话式** | ChatGPT、Claude | 自然语言 → 文本 | 上下文管理、对话引导、输出格式控制 |
@@ -146,6 +150,10 @@
 
 **AARRR 漏斗** — 每个环节都有对应指标和打法：
 
+<p align="center">
+  <img src="./assets/aarrr-funnel.png" width="400" alt="AARRR 增长漏斗：获客 → 激活 → 留存 → 变现 → 推荐" />
+</p>
+
 ```
 Acquisition  →  Activation  →  Retention  →  Revenue  →  Referral
 用户从哪来       首次体验价值     持续回来用      愿意付钱       愿意推荐
@@ -154,7 +162,13 @@ Acquisition  →  Activation  →  Retention  →  Revenue  →  Referral
 
 **北极星指标** — 找到最能代表产品价值的那个数字。好的北极星指标 = 反映用户获得的核心价值 + 可被团队行动影响 + 与收入正相关
 
-**增长飞轮**：内容 → 用户 → 数据 → 产品优化 → 更多用户 → 更多内容（正循环）
+**增长飞轮**：
+
+<p align="center">
+  <img src="./assets/growth-flywheel.png" width="400" alt="增长飞轮：内容 → 用户 → 数据 → 产品优化 → 传播 → 更多内容" />
+</p>
+
+内容 → 用户 → 数据 → 产品优化 → 更多用户 → 更多内容（正循环）
 
 **PMF 验证标准**：如果明天关掉产品，超过 40% 的用户会"非常失望"
 
@@ -297,6 +311,10 @@ Acquisition  →  Activation  →  Retention  →  Revenue  →  Referral
 **利润率基准**：标准化交付 50~60%，定制开发 30~40%，纯外包转包 10~20%
 
 **关键财务指标**：
+
+<p align="center">
+  <img src="./assets/financial-dashboard.png" width="560" alt="初创公司财务健康仪表盘" />
+</p>
 
 | 指标 | 健康值 |
 |------|--------|
@@ -442,6 +460,10 @@ Acquisition  →  Activation  →  Retention  →  Revenue  →  Referral
 - **说服力** — 说服不是"你应该"，而是"对你有什么好处"
 
 ### 从工程师到合伙人的关键转变
+
+<p align="center">
+  <img src="./assets/engineer-to-cofounder.png" width="600" alt="从工程师到合伙人的四阶段转变之路" />
+</p>
 
 | 维度 | 工程师 | 合伙人 |
 |------|--------|--------|
