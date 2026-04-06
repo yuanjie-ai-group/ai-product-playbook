@@ -6,6 +6,21 @@
 
 后端工程师出身，在 AI 初创团队（元境）中发现：仅靠技术远远不够。这个仓库是从**工程师 → 合伙人**的实战成长记录，所有内容围绕元境产品展开，不做纯理论。
 
+## 🚀 AI 加持：Claude Code 技能指南
+
+这个仓库已集成 **76+ 个专业 Skills** 和 **16 个快捷命令**，与成长路径一一对应：
+
+| 阶段 | 推荐技能 | 快速命令 |
+|------|---------|---------|
+| Stage 1 产品思维 | `discovery-process`, `jobs-to-be-done`, `user-story` | `/write-prd`, `/discover` |
+| Stage 2 增长运营 | `acquisition-channel-advisor`, `seo`, `seo-geo` | `/keyword-research`, `/audit-page`, `/write-content` |
+| Stage 3 商业战略 | `business-health-diagnostic`, `roadmap-planning`, `positioning-statement` | `/strategy`, `/plan-roadmap`, `/prioritize` |
+| Stage 4 领导力 | `director-readiness-advisor`, `altitude-horizon-framework` | `/leadership-transition` |
+
+**→ 完整技能文档：[SKILL_GUIDE.md](./SKILL_GUIDE.md)**
+
+---
+
 ## 全景图
 
 <p align="center">

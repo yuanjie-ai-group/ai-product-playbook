@@ -2,6 +2,22 @@
 
 > 好的工具让你事半功倍
 
+## Claude Code 技能库
+
+本仓库已集成 **76+ 个 Claude Code Skills**，覆盖产品全链路工作流程：
+
+| 类别 | 技能示例 | 快速命令 |
+|------|---------|---------|
+| 产品发现 | `discovery-process`, `jobs-to-be-done`, `customer-journey-map` | `/discover`, `/write-prd` |
+| SEO/GEO | `seo`, `seo-geo`, `seo-content`, `acquisition-channel-advisor` | `/keyword-research`, `/audit-page`, `/write-content` |
+| 战略规划 | `business-health-diagnostic`, `roadmap-planning`, `positioning-statement` | `/strategy`, `/plan-roadmap`, `/prioritize` |
+| 领导力 | `director-readiness-advisor`, `altitude-horizon-framework` | `/leadership-transition` |
+| 深度研究 | `research`, `research-deep`, `company-research` | - |
+
+**→ 完整技能指南：[SKILL_GUIDE.md](../SKILL_GUIDE.md)**
+
+---
+
 ## 产品设计
 | 工具 | 用途 | 推荐度 |
 |------|------|--------|
