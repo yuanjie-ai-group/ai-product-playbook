@@ -15,7 +15,7 @@
 
 ## 一、客户生命周期
 
-![客户旅程地图](../assets/12-customer-journey.png)
+![客户旅程地图](../../assets/12-customer-journey.png)
 
 ```
 线索 → 商机 → 签约 → 交付 → 验收 → 维护 → 复购/转介绍
@@ -25,7 +25,7 @@
 
 ## 二、商机管理
 
-![CRM 销售漏斗](../assets/03-crm-funnel.png)
+![CRM 销售漏斗](../../assets/03-crm-funnel.png)
 
 ### 商机漏斗
 
